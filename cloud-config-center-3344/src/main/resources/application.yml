@@ -12,8 +12,6 @@ spring:
           #搜索目录
           search-paths:
             - springcloud-config
-          username: mopin1
-          password: qifuxionger00.00
       #读取分支
       label: master
 
