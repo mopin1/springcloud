@@ -17,12 +17,14 @@
         <module>cloud-provider-payment8004</module>
         <module>cloud-consumerzk-order80</module>
         <module>cloud-providerconsul-payment8006</module>
-        <module>cloud-sonsumerconsul-order80</module>
+        <module>cloud-consumerconsul-order80</module>
         <module>cloud-consumer-feign-order80</module>
         <module>cloud-provider-hystrix-payment8001</module>
         <module>cloud-consumer-feign-hystrix-order80</module>
         <module>cloud-consumer-hystrix-dashboard9001</module>
         <module>cloud-gateway-gateway9527</module>
+        <module>cloud-config-center-3344</module>
+        <module>cloud-config-client-3355</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -115,13 +117,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-site-plugin</artifactId>-->
-            <!--                <configuration>-->
-            <!--                    <locales>en,fr</locales>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
