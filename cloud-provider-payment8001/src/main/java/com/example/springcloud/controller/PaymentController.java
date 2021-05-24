@@ -4,6 +4,7 @@ import com.example.springcloud.entities.CommonResult;
 import com.example.springcloud.entities.Payment;
 import com.example.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CORBA.TIMEOUT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -39,7 +41,7 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        log.info("*****插入结果：" + payment);
+        log.info("*****查询结果：" + payment);
 
         if (payment != null)
             return new CommonResult<>(200, "查询成功,serverPort: " + serverPort, payment);
@@ -61,5 +63,20 @@ public class PaymentController {
         }
 
         return this.discoveryClient;
+    }
+
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLB() {
+        return serverPort;
+    }
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 }
