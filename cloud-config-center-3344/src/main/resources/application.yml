@@ -15,7 +15,19 @@ spring:
       #读取分支
       label: master
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: 'bus-refresh'
